@@ -1,0 +1,15 @@
+version: '3.4'
+services:
+  app:
+    image: bmeme/java-dev:11-openj9-X11
+    entrypoint: /bin/sleep infinity
+    working_dir: /usr/src/app/
+    volumes:
+      - "../:/usr/src/app"
+      - "/tmp/.X11-unix:/tmp/.X11-unix"
+    devices:
+      - "/dev/dri:/dev/dri"
+    environment:
+      - MAVEN_CONFIG=/usr/src/app/.cache/.m2
+      - TERM=xterm-256color
+      - DISPLAY=$DISPLAY
